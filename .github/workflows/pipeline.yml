@@ -32,7 +32,6 @@ jobs:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK_URL }}
           severity: error
           details: "ESLint Failed, files need to be fixed before releasing."
-        node-version: 16  
 
       - name: Trigger deployment
         run: curl "https://api.render.com/deploy/srv-${{ secrets.RENDER_SERVICE_ID }}?key=${{ secrets.RENDER_API_KEY }}"
@@ -44,7 +43,6 @@ jobs:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK_URL }}
           severity: info
           details: "The deployment was successful."
-        node-version: 16  
 
       - name: Notify Discord on Failure
         uses: rjstone/discord-webhook-notify@v1
@@ -53,7 +51,6 @@ jobs:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK_URL }}
           severity: error
           details: "The deployment failed."
-        node-version: 16  
 
   tag_release:
     needs: [deploy]
@@ -82,7 +79,6 @@ jobs:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK_URL }}
           severity: info
           details: "The deployment was successful."
-        node-version: 16  
 
       - name: Notify Discord on Failure
         uses: rjstone/discord-webhook-notify@v1
@@ -91,4 +87,4 @@ jobs:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK_URL }}
           severity: error
           details: "The deployment failed."
-        node-version: 16  
+          
