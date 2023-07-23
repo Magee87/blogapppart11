@@ -1,0 +1,5 @@
+POST https://fullstack-phonebook-qfi1.onrender.com/api/persons/
+Content-Type: application/json
+
+{"name": "VS",
+"number": "43434"}
