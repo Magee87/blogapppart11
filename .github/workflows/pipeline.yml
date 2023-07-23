@@ -1,5 +1,4 @@
-name: Render Deployment
-
+name: Deploy to Render
 on:
   push:
     branches:
@@ -7,15 +6,8 @@ on:
 
 jobs:
   deploy:
-    name: Wait for Deploy
+    name: Deploy to Render
     runs-on: ubuntu-latest
     steps:
-      - name: Wait for Render Deployment
-        uses: bounceapp/render-action@0.6.0
-        with:
-          render-token: ${{ secrets.RENDER_TOKEN }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          service-id: srv-ciuhorh5rnuhcntum0o0   # Replace with your actual service ID
-          retries: 20
-          wait: 16000
-          sleep: 30000
+      - name: Trigger deployment
+        run: curl https://api.render.com/deploy/srv-${{ secrets.RENDER_SERVICE_ID }}?key=${{ secrets.RENDER_TOKEN }}

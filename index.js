@@ -43,7 +43,7 @@ app.use(express.static('build'))
 
 
 
-// MORGAN PART
+// MORGAN PART 2
 morgan.token('content', (req, res) => {
   console.log(res.statusCode)
   return JSON.stringify(req.body)
